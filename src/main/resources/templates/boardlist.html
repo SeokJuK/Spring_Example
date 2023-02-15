@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">        <!--thymeleaf => 데이터를 받아와 처리해주는 것-->
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 리스트 페이지</title>
+</head>
+<style>
+            .layout{
+            width:500px;
+            margin:0 auto;
+            margin-top : 40px;
+        }
+</style>
+
+<body>
+    <div class="layout">
+        <table>
+          <thead>
+            <tr>
+              <th>글번호</th>
+              <th>제목</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr th:each="board : ${list}"> <!--list안의 보드를 하나씩 빼주는 것 (each는 반복 list에서 board가 없어질 때 까지db만큼)-->
+              <td th:text="${board.id}">1</td>
+              <td >
+                  <a th:href="@{/board/view(id=${board.id})}" th:text="${board.title}">
+
+                  </a>
+                  </td>
+          </tr>
+          </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
